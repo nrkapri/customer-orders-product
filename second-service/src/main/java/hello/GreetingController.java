@@ -16,7 +16,7 @@ public class GreetingController {
     @RequestMapping("/greeting")
     public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
     	
-    	final String uri = "http://localhost:8080/greeting";
+    	final String uri = "http://first-service:8080/greeting";
 
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri, String.class);

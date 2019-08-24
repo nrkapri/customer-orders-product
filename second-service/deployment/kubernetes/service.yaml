@@ -1,12 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
- name: first-service
+  name: second-service
 spec:
- ports:
- - port: 8080
-   targetPort: 8080
-   name: http
- selector:
-  app: first-service
- type: NodePort
+  type: LoadBalancer
+  ports:
+   - name: second-service-port
+     port: 8080
+     targetPort: 8080
+     nodePort: 30083
+  selector:
+    app: second-service
