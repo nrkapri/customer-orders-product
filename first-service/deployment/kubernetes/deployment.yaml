@@ -1,0 +1,20 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+ name: first-service
+spec:
+ selector:
+  matchLabels:
+   app: first-service
+ replicas: 3
+ template:
+   metadata:
+     labels:
+       app: first-service
+   spec:
+     containers:
+     - name: first-service
+       image: nrkapri/first-service:0.1.0
+       ports:
+       - containerPort: 8080
+         name: server

@@ -1,0 +1,6 @@
+.*
+!/.gitignore
+Servers
+RemoteSystemsTempFiles
+first-service/target
+second-service/target
