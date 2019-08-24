@@ -1,20 +1,22 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1beta1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
- name: second-service
+  name: second-service
 spec:
- selector:
-  matchLabels:
-   app: second-service
- replicas: 3
- template:
-   metadata:
-     labels:
-       app: second-service
-   spec:
-     containers:
-     - name: second-service
-       image: nrkapri/second-service:0.1.0
-       ports:
-       - containerPort: 8080
-         name: server
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: second-service
+    spec:
+      containers:
+      - name: second-service
+        image: nrkapri/second-service:0.1.0
+        ports:
+        - containerPort: 8080
+        env:
+        - name: WELCOME_STRING
+          valueFrom:
+            configMapKeyRef:
+              name: second-service
+              key: welcome-string 
