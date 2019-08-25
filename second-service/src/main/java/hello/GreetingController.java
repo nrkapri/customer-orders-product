@@ -27,6 +27,6 @@ public class GreetingController {
 
         
         return new Greeting(counter.incrementAndGet(),
-                            String.format(template+welcome+result, name));
+                            String.format(template+welcome+"a"+result, name));
     }
 }
