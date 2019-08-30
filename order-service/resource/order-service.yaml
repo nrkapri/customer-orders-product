@@ -1,0 +1,287 @@
+swagger: '2.0'
+info:
+  description: This is a simple orde-service API
+  version: 1.0.0
+  title: order-service
+  # put the contact info for your development or API team
+  contact:
+    email: nrkapri@gmail.com
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+# tags are used for organizing operations
+tags:
+- name: order
+  description: order-service
+
+paths:
+  /order:
+    get:
+      tags:
+      - order
+      summary: searches order
+      operationId: searchOrder
+      description: |
+        By passing in the appropriate options, you can search for
+        available orders in the system
+      produces:
+      - application/json
+      parameters:
+      - name: customerId
+        in: query
+        description: pass an optional customerId for looking up the orders
+        required: false
+        type: string
+      - name: productId
+        in: query
+        description: pass an optional productId for looking up the orders
+        required: false
+        type: string
+      - name: skip
+        in: query
+        description: number of records to skip for pagination
+        type: integer
+        format: int32
+        minimum: 0
+      - name: limit
+        in: query
+        description: maximum number of records to return
+        type: integer
+        format: int32
+        minimum: 0
+        maximum: 50
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/OrderItem'
+        400:
+          description: Invalid Input
+        404:
+          description: no order found
+    post:
+      tags:
+      - order
+      summary: adds an order item
+      operationId: addOrder
+      description: Adds an order to the system
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: orderItem
+        description: Order to add
+        schema:
+          $ref: '#/definitions/OrderItem'
+      responses:
+        201:
+          description: order created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing item already exists
+    
+    put:
+     tags:
+     - order
+     summary: Update an existing Order
+     operationId: updateOrder
+     consumes:
+     - application/json
+     - application/xml
+     produces:
+     - application/json
+     - application/xml
+     parameters:
+     - in: body
+       name: body
+       description: Order object that needs to be updated
+       required: true
+       schema:
+         $ref: '#/definitions/OrderItem'
+     responses:
+      400:
+        description: Invalid ID supplied
+      404:
+        description: order not found
+      405:
+        description: Validation exception
+      200:
+        description: successful operation
+        schema:
+          $ref: '#/definitions/OrderItem'
+
+  /order/{orderId}:
+    get:
+      tags:
+      - order
+      summary: Find order by Id
+      description: Returns a single order
+      operationId: getOrderById
+      produces:
+       - application/json
+       - application/xml
+      parameters:
+      - name: orderId
+        in: path
+        description: ID of order to return
+        required: true
+        type: string
+        format: uuid
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/OrderItem'
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Order not found
+    patch:
+      tags:
+      - order
+      summary: Updates order ShipAddress
+      operationId: updateOrderShipAddress
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: orderId
+        in: path
+        description: ID of order that needs to be updated
+        required: true
+        type: string
+        format: uuid
+      - name: name
+        in: body
+        description: Updated Ship Address of the order
+        required: false
+        schema:
+          $ref: '#/definitions/Address'
+      responses:
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Order not found
+        405:
+          description: Validation exception
+        200:
+          description: successful operation
+          schema:
+            $ref:  '#/definitions/OrderItem'
+      
+    delete:
+      tags:
+      - order
+      summary: Deletes an order
+      operationId: deleteOrder
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: orderId
+        in: path
+        description: Order id to delete
+        required: true
+        type: string
+        format: uuid
+      responses:
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Order not found
+        200:
+          description: successful operation
+     
+definitions:
+  OrderItem:
+    type: object
+    required:
+    - id
+    - type
+    - status
+    - customer
+    - products
+    - orderdate
+    - price
+    - shipAddress
+    properties:
+      id:
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      type:
+        type: string
+        example: new Phone
+      status:
+        type: string
+        description: order status
+        enum:
+        - active
+        - suspended
+        - cancelled
+      customer:
+       type: string
+       format: uuid
+       example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      products:
+       type: array
+       items:
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      
+      orderdate:
+        type: string
+        format: date-time
+        example: 2016-08-29T09:12:33.001Z
+      price:
+        type: number
+        format: double
+        example: 10.0
+      shipAddress:
+        $ref: '#/definitions/Address'
+  Address:
+    type: object
+    required:
+    - streetName
+    - zip
+    - city
+    - state
+    properties:
+      streetName:
+        type: string
+        example: Fox Drive
+      streetNumber:
+        type: integer
+        format: int32
+        example: 2019
+      zip:
+        type: integer
+        format: int32
+        example: 61820
+      city:
+        type: string
+        example: Champaing
+      state:
+        type: string
+        example: IL
+      country:
+        type: string
+        example: USA
+    xml:
+      name: Address
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /n411/order-service/1.0.0
+schemes:
+ - https

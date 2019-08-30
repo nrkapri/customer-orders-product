@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: first-service
+spec:
+  type: LoadBalancer
+  ports:
+   - name: product-service-port
+     port: 8080
+     targetPort: 8080
+     nodePort: 30085
+  selector:
+    app: product-service

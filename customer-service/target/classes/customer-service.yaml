@@ -1,0 +1,268 @@
+swagger: '2.0'
+info:
+  description: |
+    This is a sample customer-service microservice.  You can find 
+    out more about customer-service at 
+    [https://github.com/nrkapri/](https://github.com/nrkapri/) or on 
+    [https://nrkapri.wordpress.com, #swagger](https://nrkapri.wordpress.com).
+  version: 1.0.0
+  title: customer-service
+  termsOfService: https://github.com/nrkapri/
+  contact:
+    email: nrkapri@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+# host: petstore.swagger.io
+# basePath: /v2
+tags:
+- name: customer
+  description: Everything about your Customer
+  externalDocs:
+    description: Find out more
+    url: https://github.com/nrkapri/
+# schemes:
+# - http
+paths:
+  /customer:
+    post:
+      tags:
+      - customer
+      summary: Add a new customer 
+      operationId: addCustomer
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - in: body
+        name: body
+        description: Customer object that needs to be added to the store
+        required: true
+        schema:
+          $ref: '#/definitions/Customer'
+      responses:
+        405:
+          description: Invalid input
+        201:
+          description: customer created
+          schema:
+            type: integer
+            format: int64
+    put:
+      tags:
+      - customer
+      summary: Update an existing Customer
+      operationId: updateCustomer
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - in: body
+        name: body
+        description: Customer object that needs to be updated
+        required: true
+        schema:
+          $ref: '#/definitions/Customer'
+      responses:
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Customer not found
+        405:
+          description: Validation exception
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Customer'
+     
+  /customer/findByStatus:
+    get:
+      tags:
+      - customer
+      summary: Finds Customer by status
+      description: Multiple status values can be provided with comma separated strings
+      operationId: findCustomersByStatus
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: status
+        in: query
+        description: Status values that need to be considered for filter
+        required: true
+        type: array
+        items:
+          type: string
+          enum:
+          - active
+          - suspended
+          - cancelled
+          default: available
+        collectionFormat: multi
+      responses:
+        200:
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Customer'
+        400:
+          description: Invalid status value
+
+  /customer/{customerId}:
+    get:
+      tags:
+      - customer
+      summary: Find customer by ID
+      description: Returns a single Customer
+      operationId: getCustomerById
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: customerId
+        in: path
+        description: ID of customer to return
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Customer'
+        400:
+          description: Invalid ID supplied
+        404:
+          description: customer not found
+    patch:
+      tags:
+      - customer
+      summary: Updates a Customer with Input Name
+      operationId: updateCustomerAddress
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: customerId
+        in: path
+        description: ID of customer that needs to be updated
+        required: true
+        type: integer
+        format: int64
+      - name: customerAddress
+        in: body
+        description: Updated customer Address
+        required: false
+        schema:
+          $ref: '#/definitions/Address'
+      responses:
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Customer not found
+        405:
+          description: Validation exception
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Customer'
+        
+    delete:
+      tags:
+      - customer
+      summary: Deletes a customer
+      operationId: deleteCustomer
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: customerId
+        in: path
+        description: Customer id to delete
+        required: true
+        type: integer
+        format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Customer not found
+        200:
+          description: successful operation
+      
+definitions:
+  Customer:
+    type: object
+    required:
+    - name
+    - status
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+        example: Nayan
+      address:
+        $ref: '#/definitions/Address'
+      status:
+        type: string
+        description: customer status 
+        enum:
+        - active
+        - suspended
+        - cancelled
+    xml:
+      name: Customer
+      
+  Address:
+    type: object
+    required:
+    - streetName
+    - zip
+    - city
+    - state
+    properties:
+      streetName:
+        type: string
+        example: Fox Drive
+      streetNumber:
+        type: integer
+        format: int32
+        example: 2019
+      zip:
+        type: integer
+        format: int32
+        example: 61820
+      city:
+        type: string
+        example: Champaing
+      state:
+        type: string
+        example: IL
+      country:
+        type: string
+        example: USA
+    xml:
+      name: Address
+
+externalDocs:
+  description: Find out more about customer-service
+  url: https://github.com/nrkapri/
+
+host: virtserver.swaggerhub.com
+
+basePath: /n411/customer-service/1.0.0
+
+schemes:
+ - http
