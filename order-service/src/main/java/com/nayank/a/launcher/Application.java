@@ -13,7 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @ComponentScan({"com.nayank.b.controller",
 	"com.nayank.d.service",
 "com.nayank.g.logging"})
-@EntityScan("com.nayank.f.persistance")
+//@EntityScan("com.nayank.f.persistance")
 @EnableJpaRepositories(basePackages = {"com.nayank.f.persistance"})
 @SpringBootApplication
 @EnableDiscoveryClient
