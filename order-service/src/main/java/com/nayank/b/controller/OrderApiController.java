@@ -55,7 +55,7 @@ public class OrderApiController implements OrderApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<OrderItem>(objectMapper.readValue("{  \"price\" : 10.0,  \"id\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",  \"type\" : \"new Phone\",  \"orderdate\" : \"2016-08-29T09:12:33.001+0000\",  \"status\" : \"active\",  \"customer\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",  \"products\" : [ \"d290f1ee-6c54-4b01-90e6-d701748f0851\", \"d290f1ee-6c54-4b01-90e6-d701748f0851\" ],  \"shipAddress\" : {    \"zip\" : 61820,    \"country\" : \"USA\",    \"streetName\" : \"Fox Drive\",    \"streetNumber\" : 2019,    \"city\" : \"Champaing\",    \"state\" : \"IL\"  }}", OrderItem.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<OrderItem>(objectMapper.readValue("{  \"price\" : 10.0,  \"id\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",  \"type\" : \"new Phone\",  \"orderdate\" : \"2016-08-29T09:12:33.001+0000\",  \"status\" : \"active\",  \"customer\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",  \"products\" : [ \"d290f1ee-6c54-4b01-90e6-d701748f0851\", \"d290f1ee-6c54-4b01-90e6-d701748f0851\" ],  \"shipAddress\" : {    \"zip\" : 61820,    \"country\" : \"USA\",    \"streetName\" : \"Fox Drive\",    \"streetNumber\" : 2019,    \"city\" : \"Champaing\",    \"state\" : \"IL\"  }}", OrderItem.class), HttpStatus.ACCEPTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<OrderItem>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -78,7 +78,7 @@ public class OrderApiController implements OrderApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<List<OrderItem>>(objectMapper.readValue("[ {  \"price\" : 10.0,  \"id\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",  \"type\" : \"new Phone\",  \"orderdate\" : \"2016-08-29T09:12:33.001+0000\",  \"status\" : \"active\",  \"customer\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",  \"products\" : [ \"d290f1ee-6c54-4b01-90e6-d701748f0851\", \"d290f1ee-6c54-4b01-90e6-d701748f0851\" ],  \"shipAddress\" : {    \"zip\" : 61820,    \"country\" : \"USA\",    \"streetName\" : \"Fox Drive\",    \"streetNumber\" : 2019,    \"city\" : \"Champaing\",    \"state\" : \"IL\"  }}, {  \"price\" : 10.0,  \"id\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",  \"type\" : \"new Phone\",  \"orderdate\" : \"2016-08-29T09:12:33.001+0000\",  \"status\" : \"active\",  \"customer\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",  \"products\" : [ \"d290f1ee-6c54-4b01-90e6-d701748f0851\", \"d290f1ee-6c54-4b01-90e6-d701748f0851\" ],  \"shipAddress\" : {    \"zip\" : 61820,    \"country\" : \"USA\",    \"streetName\" : \"Fox Drive\",    \"streetNumber\" : 2019,    \"city\" : \"Champaing\",    \"state\" : \"IL\"  }} ]", List.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<List<OrderItem>>(objectMapper.readValue("[ {  \"price\" : 10.0,  \"id\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",  \"type\" : \"new Phone\",  \"orderdate\" : \"2016-08-29T09:12:33.001+0000\",  \"status\" : \"active\",  \"customer\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",  \"products\" : [ \"d290f1ee-6c54-4b01-90e6-d701748f0851\", \"d290f1ee-6c54-4b01-90e6-d701748f0851\" ],  \"shipAddress\" : {    \"zip\" : 61820,    \"country\" : \"USA\",    \"streetName\" : \"Fox Drive\",    \"streetNumber\" : 2019,    \"city\" : \"Champaing\",    \"state\" : \"IL\"  }}, {  \"price\" : 10.0,  \"id\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",  \"type\" : \"new Phone\",  \"orderdate\" : \"2016-08-29T09:12:33.001+0000\",  \"status\" : \"active\",  \"customer\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",  \"products\" : [ \"d290f1ee-6c54-4b01-90e6-d701748f0851\", \"d290f1ee-6c54-4b01-90e6-d701748f0851\" ],  \"shipAddress\" : {    \"zip\" : 61820,    \"country\" : \"USA\",    \"streetName\" : \"Fox Drive\",    \"streetNumber\" : 2019,    \"city\" : \"Champaing\",    \"state\" : \"IL\"  }} ]", List.class), HttpStatus.ACCEPTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<List<OrderItem>>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -92,7 +92,7 @@ public class OrderApiController implements OrderApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<OrderItem>(objectMapper.readValue("{  \"price\" : 10.0,  \"id\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",  \"type\" : \"new Phone\",  \"orderdate\" : \"2016-08-29T09:12:33.001+0000\",  \"status\" : \"active\",  \"customer\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",  \"products\" : [ \"d290f1ee-6c54-4b01-90e6-d701748f0851\", \"d290f1ee-6c54-4b01-90e6-d701748f0851\" ],  \"shipAddress\" : {    \"zip\" : 61820,    \"country\" : \"USA\",    \"streetName\" : \"Fox Drive\",    \"streetNumber\" : 2019,    \"city\" : \"Champaing\",    \"state\" : \"IL\"  }}", OrderItem.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<OrderItem>(objectMapper.readValue("{  \"price\" : 10.0,  \"id\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",  \"type\" : \"new Phone\",  \"orderdate\" : \"2016-08-29T09:12:33.001+0000\",  \"status\" : \"active\",  \"customer\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",  \"products\" : [ \"d290f1ee-6c54-4b01-90e6-d701748f0851\", \"d290f1ee-6c54-4b01-90e6-d701748f0851\" ],  \"shipAddress\" : {    \"zip\" : 61820,    \"country\" : \"USA\",    \"streetName\" : \"Fox Drive\",    \"streetNumber\" : 2019,    \"city\" : \"Champaing\",    \"state\" : \"IL\"  }}", OrderItem.class), HttpStatus.ACCEPTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<OrderItem>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -101,7 +101,7 @@ public class OrderApiController implements OrderApi {
 
         if (accept != null && accept.contains("application/xml")) {
             try {
-                return new ResponseEntity<OrderItem>(objectMapper.readValue("<null>  <id>d290f1ee-6c54-4b01-90e6-d701748f0851</id>  <type>new Phone</type>  <status>aeiou</status>  <customer>d290f1ee-6c54-4b01-90e6-d701748f0851</customer>  <products>d290f1ee-6c54-4b01-90e6-d701748f0851</products>  <orderdate>2016-08-29T09:12:33.001+0000</orderdate>  <price>10.0</price></null>", OrderItem.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<OrderItem>(objectMapper.readValue("<null>  <id>d290f1ee-6c54-4b01-90e6-d701748f0851</id>  <type>new Phone</type>  <status>aeiou</status>  <customer>d290f1ee-6c54-4b01-90e6-d701748f0851</customer>  <products>d290f1ee-6c54-4b01-90e6-d701748f0851</products>  <orderdate>2016-08-29T09:12:33.001+0000</orderdate>  <price>10.0</price></null>", OrderItem.class), HttpStatus.ACCEPTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/xml", e);
                 return new ResponseEntity<OrderItem>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -115,7 +115,7 @@ public class OrderApiController implements OrderApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<OrderItem>(objectMapper.readValue("{  \"price\" : 10.0,  \"id\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",  \"type\" : \"new Phone\",  \"orderdate\" : \"2016-08-29T09:12:33.001+0000\",  \"status\" : \"active\",  \"customer\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",  \"products\" : [ \"d290f1ee-6c54-4b01-90e6-d701748f0851\", \"d290f1ee-6c54-4b01-90e6-d701748f0851\" ],  \"shipAddress\" : {    \"zip\" : 61820,    \"country\" : \"USA\",    \"streetName\" : \"Fox Drive\",    \"streetNumber\" : 2019,    \"city\" : \"Champaing\",    \"state\" : \"IL\"  }}", OrderItem.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<OrderItem>(objectMapper.readValue("{  \"price\" : 10.0,  \"id\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",  \"type\" : \"new Phone\",  \"orderdate\" : \"2016-08-29T09:12:33.001+0000\",  \"status\" : \"active\",  \"customer\" : \"d290f1ee-6c54-4b01-90e6-d701748f0851\",  \"products\" : [ \"d290f1ee-6c54-4b01-90e6-d701748f0851\", \"d290f1ee-6c54-4b01-90e6-d701748f0851\" ],  \"shipAddress\" : {    \"zip\" : 61820,    \"country\" : \"USA\",    \"streetName\" : \"Fox Drive\",    \"streetNumber\" : 2019,    \"city\" : \"Champaing\",    \"state\" : \"IL\"  }}", OrderItem.class), HttpStatus.ACCEPTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<OrderItem>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -124,7 +124,7 @@ public class OrderApiController implements OrderApi {
 
         if (accept != null && accept.contains("application/xml")) {
             try {
-                return new ResponseEntity<OrderItem>(objectMapper.readValue("<null>  <id>d290f1ee-6c54-4b01-90e6-d701748f0851</id>  <type>new Phone</type>  <status>aeiou</status>  <customer>d290f1ee-6c54-4b01-90e6-d701748f0851</customer>  <products>d290f1ee-6c54-4b01-90e6-d701748f0851</products>  <orderdate>2016-08-29T09:12:33.001+0000</orderdate>  <price>10.0</price></null>", OrderItem.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<OrderItem>(objectMapper.readValue("<null>  <id>d290f1ee-6c54-4b01-90e6-d701748f0851</id>  <type>new Phone</type>  <status>aeiou</status>  <customer>d290f1ee-6c54-4b01-90e6-d701748f0851</customer>  <products>d290f1ee-6c54-4b01-90e6-d701748f0851</products>  <orderdate>2016-08-29T09:12:33.001+0000</orderdate>  <price>10.0</price></null>", OrderItem.class), HttpStatus.ACCEPTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/xml", e);
                 return new ResponseEntity<OrderItem>(HttpStatus.INTERNAL_SERVER_ERROR);

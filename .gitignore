@@ -2,5 +2,5 @@
 !/.gitignore
 Servers
 RemoteSystemsTempFiles
-first-service/target
-second-service/target
+*/target/*
+*/bin/*
