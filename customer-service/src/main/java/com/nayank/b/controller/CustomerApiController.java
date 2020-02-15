@@ -100,7 +100,7 @@ public class CustomerApiController implements CustomerApi {
 		String accept = request.getHeader("Accept");
 		if (accept != null && accept.contains("application/json")) {
 			try {
-				return new ResponseEntity<Customer>(objectMapper.readValue("{  \"address\" : {    \"zip\" : 61820,    \"country\" : \"USA\",    \"streetName\" : \"Fox Drive\",    \"streetNumber\" : 2019,    \"city\" : \"Champaing\",    \"state\" : \"IL\"  },  \"name\" : \"Nayan\",  \"id\" : 0,  \"status\" : \"active\"}", Customer.class), HttpStatus.NOT_IMPLEMENTED);
+				return new ResponseEntity<Customer>(objectMapper.readValue("{  \"address\" : {    \"zip\" : 61820,    \"country\" : \"USA\",    \"streetName\" : \"Fox Drive\",    \"streetNumber\" : 2019,    \"city\" : \"Champaing\",    \"state\" : \"IL\"  },  \"name\" : \"Nayan\",  \"id\" : 0,  \"status\" : \"active\"}", Customer.class), HttpStatus.ACCEPTED);
 			} catch (IOException e) {
 				log.error("Couldn't serialize response for content type application/json", e);
 				return new ResponseEntity<Customer>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -123,7 +123,7 @@ public class CustomerApiController implements CustomerApi {
 		String accept = request.getHeader("Accept");
 		if (accept != null && accept.contains("application/json")) {
 			try {
-				return new ResponseEntity<Customer>(objectMapper.readValue("{  \"address\" : {    \"zip\" : 61820,    \"country\" : \"USA\",    \"streetName\" : \"Fox Drive\",    \"streetNumber\" : 2019,    \"city\" : \"Champaing\",    \"state\" : \"IL\"  },  \"name\" : \"Nayan\",  \"id\" : 0,  \"status\" : \"active\"}", Customer.class), HttpStatus.NOT_IMPLEMENTED);
+				return new ResponseEntity<Customer>(objectMapper.readValue("{  \"address\" : {    \"zip\" : 61820,    \"country\" : \"USA\",    \"streetName\" : \"Fox Drive\",    \"streetNumber\" : 2019,    \"city\" : \"Champaing\",    \"state\" : \"IL\"  },  \"name\" : \"Nayan\",  \"id\" : 0,  \"status\" : \"active\"}", Customer.class), HttpStatus.ACCEPTED);
 			} catch (IOException e) {
 				log.error("Couldn't serialize response for content type application/json", e);
 				return new ResponseEntity<Customer>(HttpStatus.INTERNAL_SERVER_ERROR);
