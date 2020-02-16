@@ -7,9 +7,14 @@ Application is deployed in kubernetes.
 
 
 customer-service	
+
 order-service	
+
 product-service	
 
+
 To demonstrate calling one service from another within kubertentes second-service calls first-service:
+
 first-service	
+
 second-service
