@@ -5,17 +5,17 @@ Each microservice is developed using spring boot.
 spring boot application is dockerized. 
 Application is deployed in kubernetes.
 
+|-- customer-service 
 
-customer-service	
+|-- order-service
 
-order-service	
+|-- product-service
 
-product-service	
 
 
 
 To demonstrate calling one service from another within kubertentes second-service calls first-service:
 
-first-service	
+|-- first-service
 
-second-service
+|-- second-service
