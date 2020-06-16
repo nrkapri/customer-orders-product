@@ -1,4 +1,4 @@
-# kubernetes
+# customer orders product microservice architecture
 This is a sample microservice application for classic "customer orders product" use case.
 
 Each microservice is developed using spring boot. <br/>
